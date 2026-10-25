@@ -1,0 +1,1 @@
+Start the simulated session now. Use the supplied patient_record to voice one concrete concern in the patient's own words. This is an opening statement, before any therapist-patient round. Follow the patient simulator JSON output contract.

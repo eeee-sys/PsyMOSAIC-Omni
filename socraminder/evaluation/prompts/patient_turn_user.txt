@@ -1,0 +1,1 @@
+Read the public conversation and answer only the latest therapist_response as this same patient. Develop the episode consistently and let useful discoveries depend on the therapist's actual question. Follow the patient simulator JSON output contract.

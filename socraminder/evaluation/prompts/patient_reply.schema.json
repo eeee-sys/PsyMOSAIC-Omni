@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patient simulator reply",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["response", "session_end_requested", "closure_ready"],
+  "properties": {
+    "response": {"type": "string", "minLength": 1},
+    "session_end_requested": {"type": "boolean"},
+    "closure_ready": {"type": "boolean"}
+  }
+}

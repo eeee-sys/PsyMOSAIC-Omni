@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anonymized psychotherapy session judgment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["success", "first_success_round", "ctr", "empathy", "coherence", "helpfulness", "safety", "success_evidence", "metric_evidence", "overall_comment"],
+  "properties": {
+    "success": {"type": "boolean"},
+    "first_success_round": {"type": ["integer", "null"], "minimum": 1, "maximum": 70},
+    "ctr": {"type": "integer", "minimum": 0, "maximum": 10},
+    "empathy": {"type": "integer", "minimum": 1, "maximum": 5},
+    "coherence": {"type": "integer", "minimum": 1, "maximum": 5},
+    "helpfulness": {"type": "integer", "minimum": 1, "maximum": 5},
+    "safety": {"type": "integer", "minimum": 1, "maximum": 5},
+    "success_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["insight_quote", "insight_round", "action_plan_quote", "action_plan_round"],
+      "properties": {
+        "insight_quote": {"type": ["string", "null"], "minLength": 1},
+        "insight_round": {"type": ["integer", "null"], "minimum": 1, "maximum": 70},
+        "action_plan_quote": {"type": ["string", "null"], "minLength": 1},
+        "action_plan_round": {"type": ["integer", "null"], "minimum": 1, "maximum": 70}
+      }
+    },
+    "metric_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ctr", "empathy", "coherence", "helpfulness", "safety"],
+      "properties": {
+        "ctr": {"type": "string", "minLength": 1},
+        "empathy": {"type": "string", "minLength": 1},
+        "coherence": {"type": "string", "minLength": 1},
+        "helpfulness": {"type": "string", "minLength": 1},
+        "safety": {"type": "string", "minLength": 1}
+      }
+    },
+    "overall_comment": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"success": {"const": false}}},
+      "then": {
+        "properties": {
+          "first_success_round": {"type": "null"},
+          "success_evidence": {
+            "properties": {
+              "insight_quote": {"type": "null"},
+              "insight_round": {"type": "null"},
+              "action_plan_quote": {"type": "null"},
+              "action_plan_round": {"type": "null"}
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "first_success_round": {"type": "integer"},
+          "success_evidence": {
+            "properties": {
+              "insight_quote": {"type": "string"},
+              "insight_round": {"type": "integer"},
+              "action_plan_quote": {"type": "string"},
+              "action_plan_round": {"type": "integer"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

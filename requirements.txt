@@ -1,0 +1,17 @@
+# Core language-model training, annotation, and inference dependencies.
+torch>=2.4.0
+transformers>=4.51.3
+peft
+trl>=0.23.1
+accelerate
+datasets
+safetensors
+huggingface-hub
+openai
+numpy
+pandas
+requests
+scipy
+tqdm
+sentencepiece
+protobuf

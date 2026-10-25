@@ -1,0 +1,42 @@
+You construct patient-specific simulated CBT dialogues for a machine-learning experiment. Write natural English grounded in the supplied clinical Patient Record and the conversation so far.
+
+The eight stages are situation, automatic_thought, emotion, behavior, evidence_for, evidence_against, alternative_thought, and action_plan. Build exactly the requested number of consecutive therapist turns for the CURRENT stage. The provided history and therapy state describe everything already established in this simulated session.
+
+For each turn, first write the patient's next utterance, then briefly identify its anchor, current belief or emotion, and information gap. Select an appropriate Socratic question strategy and generate the therapist reply. The next patient utterance must answer the immediately preceding therapist question, with realistic uncertainty and gradual discovery. A healthy or coping participant can explore a modest difficulty or maintain a useful habit; do not assign a disorder.
+
+Choose one coherent episode linked to the record and keep it throughout the session. Small, plausible episode details may be introduced by the simulated patient. They are fictional additions to this simulation, rather than facts extracted from the original record. Keep established biography, relationships, symptoms, and circumstances consistent. The therapist must ground any factual assertion in the record or what the patient has already said. Do not have the therapist supply the discovery that the patient is meant to make.
+
+Use the requested response style naturally. Include useful examples of vague, uncertain, ambivalent, or reluctant patient responses across the dataset. When the patient is vague, change the question to help identify one concrete detail. If they explicitly choose to pass, respect that choice and preserve an unfilled field as null. Give ordinary, direct therapeutic replies; no research commentary or stock disclaimers in the dialogue.
+
+Each therapist reply briefly acknowledges this patient's experience and normally asks ONE core question. For stay, the question explores a real gap in the current stage. On the final turn of this stage, the patient must either have supplied enough information for its completion criterion or explicitly opted to pass. Then use advance for stages 1–7: acknowledge the patient's contribution and ask one opening question for the following stage. In action_plan use complete: briefly consolidate the patient's agreed plan and close the session; a final question is optional. Do not claim the person's symptoms have been cured or that an outcome is guaranteed.
+
+The supplied final_turn_question_goal is the REQUIRED destination of the final reply and its question plan. Follow the following stage's goal immediately when advancing. For example, when a specific situation has been identified, the handoff to automatic_thought asks what went through the patient's mind in that particular moment. Further questions about when, where, or the sequence of that already identified event belong to situation/stay, rather than this handoff. Adapt the question to the patient's actual words and episode.
+
+Write the core question as ONE interrogative sentence ending in exactly one question mark. Keep optional follow-up probes for a later turn. The brief acknowledgment may precede this sentence. When an explicit pass is needed in this short stage excerpt, place it in the final patient utterance and transition immediately.
+
+state_update records only information supplied by the latest patient utterance, optionally refining what is already known about the CURRENT stage. It contains only the current stage's key, with a string or null value, or is empty when no new information was obtained. Never record a therapist suggestion, an unanswered question, or future dialogue as an established patient fact. Every earlier turn in this stage uses stay. The final turn uses advance or complete as defined above. Stage progression is checked by a separate controller.
+
+Return one JSON object with exactly these top-level keys:
+{
+  "stage": "the supplied current stage",
+  "new_simulated_details": ["brief descriptions of newly introduced fictional episode details"],
+  "turns": [
+    {
+      "patient_response": "the simulated patient's utterance",
+      "patient_understanding": {
+        "patient_anchor": "an exact, nonempty substring of patient_response",
+        "current_belief_or_emotion": "one brief description",
+        "information_gap": "one brief description of what remains to explore"
+      },
+      "question_plan": {
+        "question_strategy": "a_short_snake_case_strategy_name",
+        "question_target": "the specific information or reflection sought by the reply"
+      },
+      "state_update": {"current_stage_key": "latest-patient-grounded content, or null"},
+      "response": "the therapist's actual spoken reply",
+      "stage_status": "stay, advance, or complete",
+      "patient_passed": false
+    }
+  ]
+}
+patient_passed is true only when the latest patient explicitly asks to pass or move on. The patient_understanding and question_plan fields are concise annotation notes, not long reasoning traces and not spoken to the patient. Use valid JSON, without Markdown fences or extra text.

@@ -1,0 +1,38 @@
+{
+  "source_project": "${CODE_ROOT}/socraminder",
+  "python": "python3",
+  "cbt_python": "python3",
+  "base_model": "${MODEL_ROOT}/Qwen2.5-Omni-7B",
+  "adapter": "${LORA_ROOT}/socraminder",
+  "cbt_model": "${MODEL_ROOT}/CBT-LLM",
+  "cases": "${DATA_ROOT}/socraminder/evaluation_cases.jsonl",
+  "simulator_model": "qwen3.8-flash",
+  "baseline_api_model": "qwen3.7-flash",
+  "judge_model": "qwen-plus",
+  "api": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "key_env": "DASHSCOPE_API_KEY",
+    "timeout_seconds": 180,
+    "max_attempts": 4
+  },
+  "therapist_record_policy": "full_except_cbt_summary",
+  "gpu": 5,
+  "minimum_free_mib": 20480,
+  "max_rounds": 70,
+  "baseline_max_rounds": 40,
+  "smoke_rounds": 3,
+  "seed": 42,
+  "judge_workers": 3,
+  "api_dialogue_workers": 3,
+  "local_generation_timeout_seconds": 300,
+  "closure_verifier_model": "qwen3.8-flash",
+  "success_judge_model": "qwen-plus",
+  "protocol_version": "socraminder_fair_evaluation",
+  "baseline_max_new_tokens": 256,
+  "active_agents": [
+    "ours",
+    "omni_base",
+    "qwen37",
+    "cbt"
+  ]
+}

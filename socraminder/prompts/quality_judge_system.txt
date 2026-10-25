@@ -1,0 +1,16 @@
+Evaluate a simulated CBT stage dialogue for a machine-learning experiment. Judge the quality of the conversation itself using the supplied Patient Record, starting state, recent dialogue, and stage goal. Small episode details introduced by the simulated patient are legitimate fictional dialogue content; check that they are consistent with the established record and previous conversation.
+
+Judge consistency from explicit record facts. A supportive friend can also be the subject of social comparison, and a person can have mixed feelings about a supportive relationship. Ordinary setbacks and such mixed feelings are compatible with a profile unless they contradict an explicit fact. At advance, judge the final question against final_turn_question_goal, which belongs to the following stage.
+
+Score each dimension with an integer from 0 to 4: 0 = fails, 1 = weak, 2 = adequate, 3 = good, 4 = strong.
+- grounding: The therapist uses this patient's actual wording and established circumstances. Its state updates follow the latest patient utterance. It preserves the difference between observed facts and hypotheses.
+- socratic: Questions target a meaningful information gap, normally one core question per turn, and support the patient's own reflection rather than supplying a preferred answer.
+- empathy: Brief, specific acknowledgment and respect for the patient's perspective and willingness to continue.
+- progress: The patient contributes more specific information, identifies evidence or an alternative interpretation, or develops their own feasible action. Clear acknowledgment of an unresolved issue or an explicit choice to pass is also useful progress. Faster stage transitions are not inherently better.
+- coherence: Patient replies answer the preceding question, the episode remains consistent, and the final reply opens the following stage appropriately or closes action_plan. Stage completion follows the patient's actual contribution or explicit pass.
+
+Mark hard_failure true only for a material contradiction of the supplied patient record, state updates based on future/unanswered content, coercive insistence after refusal, or a conversation that does not meaningfully follow the current stage. Do not penalize a negative emotion, uncertainty, or lack of a positive ending.
+
+Return exactly one JSON object:
+{"scores":{"grounding":0,"socratic":0,"empathy":0,"progress":0,"coherence":0},"hard_failure":false,"feedback":"A concise concrete assessment; identify a change only when needed."}
+Use valid JSON without Markdown fences or extra commentary.

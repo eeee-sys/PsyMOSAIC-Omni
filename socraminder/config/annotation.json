@@ -1,0 +1,18 @@
+{
+  "api": {
+    "model": "qwen3.8-flash",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "key_env": "DASHSCOPE_API_KEY",
+    "timeout_seconds": 180,
+    "max_attempts": 4
+  },
+  "annotation": {
+    "seed": 42,
+    "workers": 6,
+    "stage_attempts": 6,
+    "temperature": 0.7,
+    "max_generation_tokens": 8192,
+    "max_judge_tokens": 1024,
+    "quality_threshold": 0.75
+  }
+}
