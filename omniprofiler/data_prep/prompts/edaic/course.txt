@@ -1,0 +1,28 @@
+TASK: Extract the Course module from the full interview.
+STAGE: course
+
+Describe the timing and development of symptoms or current concerns. Attribute every time expression to its topic: time since moving, job loss, treatment, or bereavement is not automatically the duration of a symptom. Keep past episodes and current experiences distinguishable. Use stated improvement, worsening, or persistence; when the direction is not established use unknown. Specific timing in different parts of the interview can be combined when they clearly refer to the same experience.
+
+Interpret "two weeks ago" as an event date. Record a two-week duration only when the participant describes persistence over those two weeks. Describe a trigger or causal link when the participant connects the events; nearby statements can have different topics. If a bare time reference such as "almost two years now" appears in a mental-health discussion but its exact topic is unresolved, preserve it in temporal_context as a time reference in that discussion. Populate onset, duration, or treatment timing with the specific relationship that the text establishes.
+
+SCHEMA (all values are strings):
+{
+  "onset": "When the symptoms or concerns started and any stated trigger, or unknown.",
+  "duration": "A short verbatim phrase explicitly describing persistence, such as for three weeks or a couple of years now, or unknown. Copy the phrase exactly from the source, and explain its clinical topic in temporal_context. Separate several supported phrases using |. An event date expressed with ago belongs in onset or temporal_context.",
+  "frequency": "How often the experiences occur, or unknown.",
+  "trend": "Reported improvement, worsening, persistence, or fluctuation, with the relevant topic, or unknown.",
+  "episodes": "Distinct previous or recurrent episodes and their timing, or unknown.",
+  "temporal_context": "Other relevant chronology connecting symptoms, concerns, or treatment, or unknown."
+}
+
+EXAMPLE 1: Event dates and symptom duration are different information.
+S0001 | My landlord raised the rent six months ago.
+S0002 | I feel worried about the bills.
+S0003 | I began counseling last month.
+S0004 | I feel calmer after the sessions.
+{"stage":"course","record_update":{"onset":"unknown","duration":"unknown","frequency":"unknown","trend":"Feels calmer after counseling sessions.","episodes":"unknown","temporal_context":"Rent increased six months ago; counseling began last month."},"source_segment_ids":["S0001","S0002","S0003","S0004"]}
+
+EXAMPLE 2: Explicit persistence supports a duration.
+S0001 | I have been having trouble sleeping for three weeks.
+S0002 | It happens nearly every night.
+{"stage":"course","record_update":{"onset":"Sleep difficulty began approximately three weeks before the interview.","duration":"for three weeks","frequency":"Nearly every night.","trend":"unknown","episodes":"unknown","temporal_context":"The three-week duration refers to sleep difficulty."},"source_segment_ids":["S0001","S0002"]}

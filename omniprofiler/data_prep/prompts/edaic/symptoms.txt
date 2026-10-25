@@ -1,0 +1,20 @@
+TASK: Extract the Symptoms module from the full interview.
+STAGE: symptoms
+
+Capture reported experiences, their expressed intensity, explicit denials, and whether they are current or historical. Interest concerns enjoyment, engagement, or loss of interest; a list of hobbies alone can establish retained interests but not a loss of interest. Anxiety includes stated worry, nervousness, fear, or panic. Trauma-related symptoms include intrusive memories, nightmares, avoidance, hypervigilance, or startle only when the text describes them. Trauma exposure itself belongs in Context & History. A person's reserved style, unemployment, or financial stress alone does not establish a symptom.
+
+SCHEMA (all values are strings):
+{
+  "mood": "Reported low mood, sadness, positive mood, emotional numbness, or an explicit denial, or unknown.",
+  "interest": "Reported enjoyment, engagement, reduced motivation or interest, or unknown.",
+  "anxiety": "Reported anxiety, worry, fear, nervousness, or panic, or unknown.",
+  "sleep": "Reported sleep pattern, sleep difficulty, nightmares, or an explicit denial, or unknown.",
+  "energy": "Reported fatigue, sluggishness, vitality, or unknown.",
+  "concentration": "Reported concentration, attention, or decision-making difficulty, or unknown.",
+  "appetite": "Reported appetite or eating changes, or unknown.",
+  "psychomotor": "Reported slowing, agitation, or restlessness, or unknown.",
+  "self_evaluation": "Reported self-worth, guilt, failure, hopelessness, or confidence, or unknown.",
+  "trauma_related": "Reported trauma-related symptom experiences, or unknown.",
+  "irritability": "Reported irritability, frustration, or anger-control difficulty, or unknown.",
+  "other": "Other explicitly reported clinically relevant symptoms, including safety-related statements when present, or unknown."
+}

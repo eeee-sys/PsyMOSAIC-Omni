@@ -1,0 +1,14 @@
+TASK: Extract the Functioning module from the full interview.
+STAGE: functioning
+
+Describe actual functioning in work or study, relationships, and everyday life, including activities that remain intact and coping strategies. Record unemployment or a job change as a current circumstance; state a symptom-related limitation only when the participant connects it to their difficulties. Choose an impairment level from described effects on daily activities, relationships, or responsibilities. Use unknown when their impact is not established. Preserved functioning and coping are useful clinical information.
+
+SCHEMA:
+{
+  "impairment": "One of none, mild, moderate, severe, unknown. none means stated functioning is intact; mild means limited interference with activities largely maintained; moderate means clear interference in at least one domain; severe means major inability to perform usual activities or responsibilities.",
+  "affected_domains": ["Zero or more of work, study, social, family, daily_life; include domains with a described functional difficulty."],
+  "work_study": "Current work or study participation and any described limitations or preserved abilities, or unknown.",
+  "relationships": "Social or family participation, connection, withdrawal, conflict, and preserved relationships, or unknown.",
+  "daily_life": "Self-care, routine, hobbies, everyday responsibilities, and any limitations, or unknown.",
+  "coping_activities": "Activities or strategies the participant uses to manage difficulties or feel better, or unknown."
+}

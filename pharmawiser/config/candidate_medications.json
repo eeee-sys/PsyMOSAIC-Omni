@@ -1,0 +1,21 @@
+{
+  "medications": [
+    "citalopram", "escitalopram", "fluoxetine", "fluvoxamine", "paroxetine", "sertraline",
+    "venlafaxine", "desvenlafaxine", "duloxetine", "bupropion", "mirtazapine", "trazodone",
+    "vortioxetine", "vilazodone", "amitriptyline", "nortriptyline", "imipramine", "clomipramine", "doxepin",
+    "buspirone", "hydroxyzine", "pregabalin", "lorazepam", "clonazepam", "diazepam", "alprazolam",
+    "zolpidem", "eszopiclone", "prazosin", "lithium", "lamotrigine", "divalproex sodium", "carbamazepine",
+    "aripiprazole", "quetiapine", "olanzapine", "risperidone", "lurasidone", "brexpiprazole", "cariprazine",
+    "clozapine", "haloperidol"
+  ],
+  "selection_note": "Fixed candidate search space. Inclusion is not an indication for every case. Ranked outputs are prioritized options, not automatic co-prescriptions.",
+  "sources": [
+    "https://www.fda.gov/consumers/womens-health-topics/depression-medicines",
+    "https://www.nimh.nih.gov/health/topics/mental-health-medications",
+    "https://www.fda.gov/media/142149/download?attachment=",
+    "https://www.fda.gov/drugs/drug-safety-and-availability/fda-requiring-boxed-warning-updated-improve-safe-use-benzodiazepine-drug-class",
+    "https://www.fda.gov/consumers/consumer-updates/taking-z-drugs-insomnia-know-risks",
+    "https://www.ema.europa.eu/en/medicines/human/EPAR/lyrica",
+    "https://www.ptsd.va.gov/professional/treat/txessentials/clinician_guide_meds.asp"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "seed": 42,
+  "duration_seconds": 10,
+  "sampling_steps": 8,
+  "timestep_shift": 3.0,
+  "frozen_planner_temperature": 0.85,
+  "frozen_planner_top_p": 0.9,
+  "fixed_lyrics": "[Instrumental]",
+  "complete_text": true,
+  "input_concat": "aspect_prompt + newline + caption",
+  "inference_version": "paired_native_v1",
+  "protocol_id": "melohealer_musiccaps",
+  "base_model": "${MODEL_ROOT}/Ace-Step1.5",
+  "training_code_root": "${CODE_ROOT}/melohealer",
+  "ace_code_root": "${VENDOR_ROOT}/ACE-Step-1.5",
+  "data_records": "${DATA_ROOT}/melohealer/musiccaps_records.jsonl",
+  "audio_root": "${OUTPUT_ROOT}/melohealer/musiccaps/audio",
+  "condition_root": "${OUTPUT_ROOT}/melohealer/musiccaps/conditions",
+  "feature_root": "${OUTPUT_ROOT}/melohealer/musiccaps/features",
+  "result_root": "${OUTPUT_ROOT}/melohealer/musiccaps/results",
+  "run_root": "${OUTPUT_ROOT}/melohealer/musiccaps/run",
+  "vendor_root": "${VENDOR_ROOT}",
+  "assets_root": "${MODEL_ROOT}/evaluation_assets",
+  "checkpoints": {
+    "panns": "${MODEL_ROOT}/PANNs/Cnn14_mAP=0.431.pth",
+    "vggish": "${MODEL_ROOT}/VGGish/pretrained/vggish-10086976.pth",
+    "aesthetics": "${MODEL_ROOT}/audiobox-aesthetics/checkpoint.pt",
+    "clap": "${MODEL_ROOT}/CLAP/music_audioset_epoch_15_esc_90.14.pt"
+  },
+  "model_kinds": [
+    "base",
+    "finetuned"
+  ],
+  "input_kinds": [
+    "aspect",
+    "caption",
+    "aspect_caption"
+  ],
+  "expected_samples": 5352,
+  "generation_gpus": [
+    2,
+    5
+  ],
+  "generation_batch_size": 8,
+  "vae_batch_size": 1,
+  "batch_sizes": {
+    "panns": 16,
+    "vggish": 16,
+    "aesthetics": 16,
+    "clap": 16
+  },
+  "cpu_threads": 6,
+  "primary_align": "original_caption",
+  "auxiliary_align": "actual_input_prompt",
+  "normalization": {
+    "version": "ace_native_peak_v2",
+    "decode_peak_limit": 1.0,
+    "enable_normalization": true,
+    "normalization_db": -1.0,
+    "near_silence_threshold": 1e-06,
+    "channel_gain": "shared_stereo"
+  },
+  "finetuned_adapter": "${LORA_ROOT}/melohealer",
+  "python": "python3"
+}

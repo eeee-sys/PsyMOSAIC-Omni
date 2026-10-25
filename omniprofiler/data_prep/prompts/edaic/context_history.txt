@@ -1,0 +1,17 @@
+TASK: Extract the Context & History module from the full interview.
+STAGE: context_history
+
+Extract background facts that help understand the participant's experiences: stressors, support, treatment, medications, health history, trauma exposure, substance use, and relevant life circumstances. Keep each fact's time frame and relationship to the participant clear. Therapy, medication, or a diagnosis discussed about another person belongs here only when it is explicitly relevant as family history or social context, identified as such. Describe adversity using the participant's account.
+
+SCHEMA (all values are strings):
+{
+  "recent_stressor": "Current or recent stressors, losses, conflict, financial issues, work changes, or transitions, or unknown.",
+  "social_support": "Available or limited support from family, friends, partners, or others, or unknown.",
+  "previous_treatment": "Reported past or ongoing therapy, counseling, psychiatric care, and its reported effects, or unknown.",
+  "current_medication": "Reported current medications and their purpose when stated, or unknown.",
+  "mental_health_history": "Reported past diagnoses, mental health episodes, or relevant family history, or unknown.",
+  "trauma_history": "Reported trauma or adverse experiences and their timing, or unknown.",
+  "medical_history": "Reported physical health conditions and relevant medical care, or unknown.",
+  "substance_use": "Reported alcohol, drugs, or other substance use and its pattern, or unknown.",
+  "background": "Relevant living situation, education, work history, family circumstances, and major life events, or unknown."
+}

@@ -1,0 +1,16 @@
+TASK: Extract the Presenting Problem module from the full interview.
+STAGE: presenting_problem
+
+Focus on what is currently troubling the participant, their present emotional or life situation, and any explicitly stated needs. This is an interview setting, so a formal request for treatment may not be stated. Use meaningful current concerns expressed anywhere in the interview. If the participant describes being well or having no current concern, record that stated condition.
+
+SCHEMA (all values are strings):
+{
+  "main_concern": "Central current difficulties or concerns in one or two sentences, or unknown.",
+  "current_state": "How the participant describes their current emotional or life state, or unknown.",
+  "stated_needs": "Any expressed wish for help, change, relief, or support, or unknown."
+}
+
+Example of a supported extraction:
+S0040 | I've been feeling overwhelmed since I lost my job.
+S0041 | I want to get back on my feet.
+{"stage":"presenting_problem","record_update":{"main_concern":"Feeling overwhelmed after losing their job.","current_state":"Currently overwhelmed.","stated_needs":"Wants to get back on their feet."},"source_segment_ids":["S0040","S0041"]}

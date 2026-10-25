@@ -1,0 +1,63 @@
+{
+  "project_name": "pharmawiser",
+  "source_notebook": "${RAW_DATA_ROOT}/MedicationAssistant/case_study_query.ipynb",
+  "data_dir": "${DATA_ROOT}/pharmawiser",
+  "candidate_file": "${CODE_ROOT}/pharmawiser/config/candidate_medications.json",
+  "base_model": "${MODEL_ROOT}/Qwen2.5-Omni-7B",
+  "run_dir": "${OUTPUT_ROOT}/pharmawiser/run",
+  "sft_output_dir": "${OUTPUT_ROOT}/pharmawiser/sft",
+  "grpo_output_dir": "${OUTPUT_ROOT}/pharmawiser/grpo",
+  "seed": 42,
+  "context_limit": 4096,
+  "projection_chunk_size": 64,
+  "api": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "key_env": "DASHSCOPE_API_KEY",
+    "model": "qwen3.8-flash",
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "max_tokens": 2048,
+    "concurrency": 3,
+    "timeout_seconds": 180,
+    "max_retries": 5
+  },
+  "lora": {
+    "rank": 32,
+    "alpha": 64,
+    "dropout": 0.05
+  },
+  "sft": {
+    "epochs": 3,
+    "learning_rate": 0.0001,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 2,
+    "save_steps": 10,
+    "save_total_limit": 5,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0
+  },
+  "grpo": {
+    "M": 6,
+    "G": 6,
+    "n_groups": 3,
+    "learning_rate": 5e-06,
+    "max_updates": 200,
+    "reevaluate_every": 10,
+    "pass_reward": 0.8,
+    "zpd_low": 0.2,
+    "zpd_high": 0.8,
+    "mastered_confirmations": 2,
+    "max_attempts": 1000,
+    "zero_variance_retries": 2,
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_completion_tokens": 768,
+    "clip_epsilon": 0.2,
+    "beta": 0.04,
+    "ppo_epochs": 1,
+    "save_steps": 10,
+    "save_total_limit": 5,
+    "max_grad_norm": 1.0,
+    "generation_batch_size": 3
+  }
+}
