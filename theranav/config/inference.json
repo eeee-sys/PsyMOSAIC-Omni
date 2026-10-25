@@ -1,0 +1,13 @@
+{
+  "experiment_name": "theranav",
+  "diagnosis_project": "${CODE_ROOT}/psydxreasoner",
+  "source_results": "${OUTPUT_ROOT}/psydxreasoner/evaluation",
+  "official_test_records": "${DATA_ROOT}/edaic/splits/test_patient_records.jsonl",
+  "base_model": "${MODEL_ROOT}/Qwen2.5-Omni-7B",
+  "output_dir": "${OUTPUT_ROOT}/theranav",
+  "run_dir": "${OUTPUT_ROOT}/theranav/run",
+  "batch_size": 2,
+  "context_limit": 32768,
+  "seed": 42,
+  "unavailable_diagnosis_policy": "Keep as UNAVAILABLE; no repair and no substitution with NEGATIVE. User approved."
+}
