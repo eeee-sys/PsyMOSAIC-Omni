@@ -40,46 +40,49 @@ Recent advances in artificial intelligence have demonstrated great potential for
 
 ## ⭐ Training detail and evaluation
 
-### 🔮 Evaluation
-```
-MODEL_PATH=/path/to/base_model \
-DATA_PATH=/path/to/human_behavior_atlas \
-ADAPTER=/path/to/checkpoint \
-EVAL_SPLIT=test EVAL_PER_DATASET=0 RUN_NAME=hecatepo_test \
-bash scripts/run_hecatepo.sh evaluate
-```
-
 #### 📖 Prepare
-Download the base model [OmniSapiens2.0](https://huggingface.co/HumanBehaviorAtlas/OmniSapiens2.0) and [Qwen2.5-Omni-7B](https://huggingface.co/Qwen/Qwen2.5-Omni-7B) from [huggingface](https://huggingface.co/)
+Download the base model [Qwen2.5-Omni-7B](https://huggingface.co/Qwen/Qwen2.5-Omni-7B) from [huggingface](https://huggingface.co/)
 
-Prepare Hecate-Omni LoRA weights from [huggingface](https://huggingface.co/datasets/Harry-1234/Hecate-Omni)
+Prepare PsyMOSAIC-Omni LoRA weights from [huggingface](https://huggingface.co/Harry-1234/PsyMOSAIC-Omni)
 
-Prepare human-behavior-atlas data from [huggingface]([https://huggingface.co/datasets/Harry-1234/Hecate-Omni](https://huggingface.co/datasets/HumanBehaviorAtlas/human_behavior_atlas)
 ### 🔥 Training
 ```
-MODEL_PATH=/path/to/base_model \
-DATA_PATH=/path/to/human_behavior_atlas \
-RUN_NAME=hecatepo_train \
-bash scripts/run_hecatepo.sh train
+# OmniProfiler:
+python omniprofiler/training/train.py 
+
+# PsyDxReasoner:
+python psydxreasoner/training/train.py 
+
+# SocraMinder:
+python socraminder/training/train.py 
+
+# PharmaWiser:
+python pharmawiser/train_sft.py 
+python pharmawiser/train_grpo.py 
+
+# MeloHealer:
+python melohealer/train.py 
 ```
-### Examples
 
-https://github.com/user-attachments/assets/000a936d-2834-4798-88f5-3d7d52c58610
+### 🌚 Evaluation
 ```
-Question:
-How would you describe the emotional state of the speaker in the recording? Choose the most appropriate emotion from:
-anger,
-disgust,
-fear,
-happy,
-surprise,
-neutral,
-sad
+# OmniProfiler
+python omniprofiler/training/evaluate.py 
 
-First reason briefly from the provided evidence. Enclose your reasoning in <think>...</think>. Then provide exactly one final answer in \boxed{...}. For classification, use exactly one of the requested labels. For open questions, give a concise, direct answer.
+# PsyDxReasoner
+python psydxreasoner/evaluation/evaluate_edaic.py 
 
-Hecate-Omni:
-<think> The speaker sounds sad because they are expressing that everything is ruined, which is a sad situation. </think> sad \boxed{sad}
+# TheraNav:
+python theranav/route.py 
+
+# SocraMinder:
+python socraminder/evaluation/evaluate.py 
+
+# PharmaWiser
+python pharmawiser/evaluate.py
+
+# MeloHealer:
+python melohealer/evaluate.py 
 ```
 ## 📜 License
 Our project is under [MIT License](https://github.com/eeee-sys/Hecate-Omni/blob/main/LICENSE)
