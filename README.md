@@ -23,11 +23,19 @@ Recent advances in artificial intelligence have demonstrated great potential for
 
 #### 📍 Results
 <p align="center">
-    <img src="./assets/model.png" width="100%" height="100%">
+    <img src="./assets/table1.png" width="100%" height="100%">
 </p>
 
 <p align="center">
-    <img src="./assets/comparison.png" width="100%" height="100%">
+    <img src="./assets/table23.png" width="100%" height="100%">
+</p>
+
+<p align="center">
+    <img src="./assets/table4.png" width="100%" height="100%">
+</p>
+
+<p align="center">
+    <img src="./assets/table5.png" width="100%" height="100%">
 </p>
 
 ## ⭐ Training detail and evaluation
