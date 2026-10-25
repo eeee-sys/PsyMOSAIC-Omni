@@ -85,4 +85,4 @@ python pharmawiser/evaluate.py
 python melohealer/evaluate.py 
 ```
 ## 📜 License
-Our project is under [MIT License](https://github.com/eeee-sys/Hecate-Omni/blob/main/LICENSE)
+Our project is under [MIT License](https://github.com/eeee-sys/PsyMOSAIC-Omni/blob/main/LICENSE)
